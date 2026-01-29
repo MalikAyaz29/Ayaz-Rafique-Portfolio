@@ -1,0 +1,325 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #eef2ff, transparent),
+    radial-gradient(1200px 600px at 90% 10%, #ecfeff, transparent),
+    #f8fafc;
+  color: #0f172a;
+  line-height: 1.7;
+}
+
+/* ================= NAVBAR ================= */
+nav {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(12px);
+  padding: 14px 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar li {
+  margin: 0 18px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #334155;
+  font-weight: 500;
+  padding: 6px 10px;
+  position: relative;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #4f46e5;
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+/* ================= HERO ================= */
+.hero {
+  background: linear-gradient(
+      rgba(15,23,42,0.75),
+      rgba(15,23,42,0.75)
+    ),
+    url('../assets/pexels-negativespace-34600.jpg');
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 150px 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  letter-spacing: -1px;
+}
+
+.hero h1 span {
+  color: #38bdf8;
+}
+
+.hero p {
+  color: #e5e7eb;
+  max-width: 620px;
+  margin: 20px auto 0;
+}
+
+.hero .btn {
+  display: inline-block;
+  margin-top: 32px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #ffffff;
+  padding: 13px 30px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 14px 34px rgba(79,70,229,0.3);
+}
+
+/* ================= SECTIONS ================= */
+section {
+  padding: 90px 20px;
+  text-align: center;
+}
+
+section:not(.hero)::before {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  background: linear-gradient(90deg, #4f46e5, #06b6d4);
+  margin: 0 auto 48px;
+  border-radius: 999px;
+  opacity: 0.25;
+}
+
+/* ================= ABOUT ================= */
+.about-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+}
+
+.profile-pic img {
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 22px 46px rgba(0,0,0,0.15);
+}
+
+.about-text {
+  max-width: 520px;
+  text-align: left;
+}
+
+.about-text p {
+  color: #475569;
+}
+
+.about-text .btn {
+  display: inline-block;
+  margin-top: 24px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 14px 32px rgba(79,70,229,0.35);
+  transition: all 0.3s ease;
+}
+
+.about-text .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 20px 44px rgba(79,70,229,0.45);
+}
+
+/* ================= SKILLS ================= */
+.skill-cards {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 26px;
+}
+
+.card {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(79,70,229,0.06);
+  padding: 28px;
+  width: 220px;
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  font-weight: 600;
+}
+
+/* ================= PROJECTS ================= */
+.projects-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project-card {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(79,70,229,0.06);
+  margin: 18px;
+  padding: 28px;
+  width: 320px;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+.project-card .btn {
+  display: inline-block;
+  margin-top: 18px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #ffffff;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-weight: 600;
+  box-shadow: 0 12px 28px rgba(79,70,229,0.35);
+  transition: all 0.3s ease;
+}
+
+.project-card .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(79,70,229,0.45);
+}
+
+/* ================= TOOLS ================= */
+.tool-card {
+  position: relative;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(79,70,229,0.06);
+  margin: 26px auto;
+  padding: 30px;
+  max-width: 520px;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  overflow: hidden;
+}
+
+.tool-card::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(79,70,229,0.18), transparent 70%);
+}
+
+/* different soft identity per tool */
+.tools-grid .tool-card:nth-child(1)::after {
+  background: radial-gradient(circle, rgba(59,130,246,0.2), transparent 70%);
+}
+.tools-grid .tool-card:nth-child(2)::after {
+  background: radial-gradient(circle, rgba(124,58,237,0.2), transparent 70%);
+}
+.tools-grid .tool-card:nth-child(3)::after {
+  background: radial-gradient(circle, rgba(6,182,212,0.2), transparent 70%);
+}
+
+.tool-card::after {
+  pointer-events: none;
+}
+
+
+/* ================= CONTACT ================= */
+.contact-form {
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border: 1px solid rgba(79,70,229,0.06);
+  margin: 20px auto;
+  padding: 38px;
+  max-width: 520px;
+  border-radius: 22px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin: 14px 0;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #c7d2fe;
+}
+
+.contact-form button {
+  width: 100%;
+  margin-top: 24px;
+  background: linear-gradient(135deg, #4f46e5, #06b6d4);
+  color: #fff;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+}
+
+/* ================= BUTTON =================*/
+.btn {
+  text-decoration: none;
+}
+
+.project-card .btn {
+  text-decoration: none;
+}
+
+
+/* ================= FOOTER ================= */
+footer {
+  background: linear-gradient(135deg, #0f172a, #1e1b4b);
+  color: #cbd5f5;
+  text-align: center;
+  padding: 30px 20px;
+  margin-top: 70px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .about-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.3rem;
+  }
+}
+
+

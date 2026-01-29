@@ -1,0 +1,47 @@
+/* CONTACT PAGE FIX ONLY */
+
+.contact-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact-form {
+  background: #fff;
+  max-width: 450px;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form button {
+  width: 100%;
+  margin-top: 15px;
+  background: #007BFF;
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.contact-form button:hover {
+  background: #0056b3;
+}
