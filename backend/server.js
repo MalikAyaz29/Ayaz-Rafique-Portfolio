@@ -2,8 +2,12 @@ require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
-const { exec } = require("child_process");
 const nodemailer = require("nodemailer");
+
+// ✅ tools folder same directory me hai
+const calculate = require("./tools/calculator");
+const sortNumbers = require("./tools/sort");
+const searchNumber = require("./tools/search");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,11 +15,11 @@ const PORT = process.env.PORT || 3000;
 // ---------- Middleware ----------
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, "public")));
 
-// ---------- Pages ----------
+// public folder root par hai
 app.use(express.static(path.join(__dirname, "..", "public")));
 
+// ---------- Pages ----------
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "..", "public", "index.html"))
 );
@@ -36,8 +40,7 @@ app.get("/contact", (req, res) =>
   res.sendFile(path.join(__dirname, "..", "public", "contact.html"))
 );
 
-
-// ---------- Email Setup (UNCHANGED) ----------
+// ---------- Email ----------
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
@@ -46,13 +49,10 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-// ---------- Contact API (UNCHANGED) ----------
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
-
-  if (!name || !email || !message) {
+  if (!name || !email || !message)
     return res.json({ success: false });
-  }
 
   try {
     await transporter.sendMail({
@@ -70,46 +70,27 @@ app.post("/api/contact", async (req, res) => {
   }
 });
 
-// ---------- TOOLS APIs (FIXED) ----------
-
-const cppPath = path.join(__dirname, "Cpp");
+// ---------- TOOLS APIs (JS VERSION) ----------
 
 // Calculator
 app.get("/api/calculate", (req, res) => {
   const { n1, n2, op } = req.query;
-  const exe = path.join(cppPath, "Calculator.exe");
-
-  exec(`"${exe}" ${n1} ${n2} ${op}`, (err, stdout) => {
-    if (err) return res.send("Error");
-    res.send(stdout.trim());
-  });
+  const result = calculate(n1, n2, op);
+  res.send(String(result));
 });
 
 // Sort
 app.get("/api/sort", (req, res) => {
-  const exe = path.join(cppPath, "Sort.exe");
-
-  exec(`"${exe}" "${req.query.nums}"`, (err, stdout) => {
-    if (err) return res.send("Error");
-    res.send(stdout.trim());
-  });
+  res.send(sortNumbers(req.query.nums));
 });
 
 // Search
 app.get("/api/search", (req, res) => {
-  const exe = path.join(cppPath, "Search.exe");
-
-  exec(
-    `"${exe}" "${req.query.data}" "${req.query.target}"`,
-    (err, stdout) => {
-      if (err) return res.send("Error");
-      res.send(stdout.trim());
-    }
-  );
+  const { data, target } = req.query;
+  res.send(searchNumber(data, target));
 });
 
 // ---------- Server ----------
 app.listen(PORT, () => {
-  console.log(`🚀 Server running at http://localhost:${PORT}`);
+  console.log(`🚀 Server running on port ${PORT}`);
 });
-
